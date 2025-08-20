@@ -3,17 +3,22 @@ const qs = require("qs");
 
 exports.getAllMovies = async (req, res) => {
   try {
-
-    let queryObj = qs.parse(req.query);
+/*     let queryObj = qs.parse(req.query);
     const queryStr = JSON.stringify(queryObj).replace(
       /\b(gte|gt|lte|lt)\b/g,
       (match) => `$${match}`
     );
     const mongoQuery = JSON.parse(queryStr);
-    console.log(mongoQuery);
+    console.log(mongoQuery); */
 
-    // Run query
-    const products = await Product.find(mongoQuery);
+     
+    // const products = await Product.find(monoQuery)
+    
+     const products = await Product.find()
+       .where("ratings")
+       .lt(req.query.ratings)
+       .where("price")
+       .gte(req.query.price);
     res.status(200).json({
       status: "success",
       counts: products.length,

@@ -1,0 +1,162 @@
+[
+  {
+    "name": "iPhone 15 Pro",
+    "category": "Electronics",
+    "image": "https://example.com/images/iphone15.jpg",
+    "price": 1200,
+    "ratings": 4.8,
+    "totalRatings": 200
+  },
+  {
+    "name": "Samsung Galaxy S24",
+    "category": "Electronics",
+    "image": "https://example.com/images/galaxy-s24.jpg",
+    "price": 1100,
+    "ratings": 4.6,
+    "totalRatings": 180
+  },
+  {
+    "name": "Sony WH-1000XM5 Headphones",
+    "category": "Electronics",
+    "image": "https://example.com/images/sony-headphones.jpg",
+    "price": 350,
+    "ratings": 4.9,
+    "totalRatings": 150
+  },
+  {
+    "name": "Dell XPS 15 Laptop",
+    "category": "Electronics",
+    "image": "https://example.com/images/dell-xps15.jpg",
+    "price": 1600,
+    "ratings": 4.7,
+    "totalRatings": 120
+  },
+  {
+    "name": "Nike Air Max 2025",
+    "category": "Clothing",
+    "image": "https://example.com/images/nike-air-max.jpg",
+    "price": 150,
+    "ratings": 4.5,
+    "totalRatings": 300
+  },
+  {
+    "name": "Adidas Hoodie",
+    "category": "Clothing",
+    "image": "https://example.com/images/adidas-hoodie.jpg",
+    "price": 75,
+    "ratings": 4.3,
+    "totalRatings": 220
+  },
+  {
+    "name": "Levi's Slim Fit Jeans",
+    "category": "Clothing",
+    "image": "https://example.com/images/levis-jeans.jpg",
+    "price": 60,
+    "ratings": 4.4,
+    "totalRatings": 260
+  },
+  {
+    "name": "Rolex Submariner Watch",
+    "category": "Clothing",
+    "image": "https://example.com/images/rolex-submariner.jpg",
+    "price": 12000,
+    "ratings": 4.9,
+    "totalRatings": 90
+  },
+  {
+    "name": "Organic Honey Jar",
+    "category": "Food",
+    "image": "https://example.com/images/organic-honey.jpg",
+    "price": 25,
+    "ratings": 4.8,
+    "totalRatings": 140
+  },
+  {
+    "name": "Kellogg's Corn Flakes",
+    "category": "Food",
+    "image": "https://example.com/images/corn-flakes.jpg",
+    "price": 10,
+    "ratings": 4.2,
+    "totalRatings": 300
+  },
+  {
+    "name": "Nutella Chocolate Spread",
+    "category": "Food",
+    "image": "https://example.com/images/nutella.jpg",
+    "price": 15,
+    "ratings": 4.7,
+    "totalRatings": 250
+  },
+  {
+    "name": "Starbucks Coffee Beans",
+    "category": "Food",
+    "image": "https://example.com/images/starbucks-beans.jpg",
+    "price": 20,
+    "ratings": 4.5,
+    "totalRatings": 210
+  },
+  {
+    "name": "The Alchemist Book",
+    "category": "Other",
+    "image": "https://example.com/images/alchemist-book.jpg",
+    "price": 12,
+    "ratings": 4.6,
+    "totalRatings": 500
+  },
+  {
+    "name": "Apple AirTag",
+    "category": "Electronics",
+    "image": "https://example.com/images/apple-airtag.jpg",
+    "price": 30,
+    "ratings": 4.4,
+    "totalRatings": 340
+  },
+  {
+    "name": "Gucci Leather Belt",
+    "category": "Clothing",
+    "image": "https://example.com/images/gucci-belt.jpg",
+    "price": 450,
+    "ratings": 4.6,
+    "totalRatings": 95
+  },
+  {
+    "name": "Oreo Cookies Pack",
+    "category": "Food",
+    "image": "https://example.com/images/oreo.jpg",
+    "price": 5,
+    "ratings": 4.3,
+    "totalRatings": 400
+  },
+  {
+    "name": "HP Envy Printer",
+    "category": "Electronics",
+    "image": "https://example.com/images/hp-envy.jpg",
+    "price": 200,
+    "ratings": 4.1,
+    "totalRatings": 175
+  },
+  {
+    "name": "Timberland Boots",
+    "category": "Clothing",
+    "image": "https://example.com/images/timberland-boots.jpg",
+    "price": 180,
+    "ratings": 4.5,
+    "totalRatings": 220
+  },
+  {
+    "name": "Canon EOS R7 Camera",
+    "category": "Electronics",
+    "image": "https://example.com/images/canon-r7.jpg",
+    "price": 1400,
+    "ratings": 4.8,
+    "totalRatings": 110
+  },
+  {
+    "name": "Monopoly Board Game",
+    "category": "Other",
+    "image": "https://example.com/images/monopoly.jpg",
+    "price": 35,
+    "ratings": 4.7,
+    "totalRatings": 310
+  }
+]

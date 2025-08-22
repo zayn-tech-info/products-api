@@ -1,24 +1,38 @@
 const Product = require("../models/product.model");
 const qs = require("qs");
 
-exports.getAllMovies = async (req, res) => {
+exports.getAllProducts = async (req, res) => {
   try {
-/*     let queryObj = qs.parse(req.query);
-    const queryStr = JSON.stringify(queryObj).replace(
+    const filterParams = { ...req.query };
+    delete filterParams.sort;
+    delete filterParams.fields
+
+    const queryStr = JSON.stringify(filterParams).replace(
       /\b(gte|gt|lte|lt)\b/g,
       (match) => `$${match}`
     );
     const mongoQuery = JSON.parse(queryStr);
-    console.log(mongoQuery); */
+    console.log("Filter:", mongoQuery);
 
-     
-    // const products = await Product.find(monoQuery)
-    
-     const products = await Product.find()
-       .where("ratings")
-       .lt(req.query.ratings)
-       .where("price")
-       .gte(req.query.price);
+    let query = Product.find(mongoQuery);
+
+    let sortBy = "-createdAt";
+    if (req.query.sort) {
+      sortBy = req.query.sort.split(",").join(" ");
+    }
+    query = query.sort(sortBy);
+    console.log("Sort:", sortBy);
+
+    // Limiting fields
+    if (req.query.fields) {
+      const fields = req.query.fields.split(",").join(" ");
+      query = query.select(fields);
+    } else {
+      query = query.select("-__v");
+    }
+    // Execute query
+    const products = await query;
+
     res.status(200).json({
       status: "success",
       counts: products.length,
@@ -34,13 +48,13 @@ exports.getAllMovies = async (req, res) => {
   }
 };
 
-exports.getMovie = async (req, res) => {
+exports.getProduct = async (req, res) => {
   try {
-    const movie = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id);
     res.status(200).json({
       status: "success",
       data: {
-        movie,
+        product,
       },
     });
   } catch (error) {
@@ -51,7 +65,7 @@ exports.getMovie = async (req, res) => {
   }
 };
 
-exports.deleteMovie = async (req, res) => {
+exports.deleteProduct = async (req, res) => {
   try {
     await Product.findByIdAndDelete(req.params.id);
     res.status(204).json({
@@ -66,7 +80,7 @@ exports.deleteMovie = async (req, res) => {
   }
 };
 
-exports.createMovie = async (req, res) => {
+exports.createProduct = async (req, res) => {
   try {
     const product = await Product.create(req.body);
     res.status(201).json({
@@ -83,7 +97,7 @@ exports.createMovie = async (req, res) => {
   }
 };
 
-exports.updateMovie = async (req, res) => {
+exports.updateProduct = async (req, res) => {
   try {
     const productToUpdate = await Product.findByIdAndUpdate(
       req.params.id,

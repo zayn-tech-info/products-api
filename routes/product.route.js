@@ -1,16 +1,16 @@
 const express = require("express");
 const router = express.Router();
+
 const {
-  getAllMovies,
-  createMovie,
-  getMovie,
-  updateMovie,
-  deleteMovie,
+  getAllProducts,
+  createProduct,
+  getProduct,
+  updateProduct,
+  deleteProduct,
 } = require("../controllers/product.controller");
 
-// router.param("id",);
-router.route("/").get(getAllMovies).post(createMovie);
+router.route("/").get(getAllProducts).post(createProduct);
 
-router.route("/:id").get(getMovie).patch(updateMovie).delete(deleteMovie);
+router.route("/:id").get(getProduct).patch(updateProduct).delete(deleteProduct);
 
 module.exports = router;

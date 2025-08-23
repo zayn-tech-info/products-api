@@ -24,7 +24,7 @@ exports.getAllProducts = async (req, res) => {
       .limitFields();
 
     const products = await features.query;
- 
+
     res.status(200).json({
       status: "success",
       counts: products.length,
@@ -38,7 +38,6 @@ exports.getAllProducts = async (req, res) => {
   }
 };
 
- 
 exports.getProduct = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
@@ -60,7 +59,6 @@ exports.getProduct = async (req, res) => {
   }
 };
 
- 
 exports.createProduct = async (req, res) => {
   try {
     const product = await Product.create(req.body);
@@ -75,7 +73,7 @@ exports.createProduct = async (req, res) => {
     });
   }
 };
- 
+
 exports.updateProduct = async (req, res) => {
   try {
     const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
@@ -93,7 +91,6 @@ exports.updateProduct = async (req, res) => {
       status: "success",
       data: { product },
     });
-
   } catch (error) {
     res.status(404).json({
       status: "fail",
@@ -102,7 +99,6 @@ exports.updateProduct = async (req, res) => {
   }
 };
 
- 
 exports.deleteProduct = async (req, res) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);
@@ -119,6 +115,45 @@ exports.deleteProduct = async (req, res) => {
   } catch (error) {
     res.status(404).json({
       status: "fail",
+      message: error.message,
+    });
+  }
+};
+
+exports.getProductStats = async (req, res) => {
+  try {
+    const productStat = await Product.aggregate([
+      { $match: { ratings: { $lte: 4.5 } } },
+      {
+        $group: {
+          _id: "$totalRatings",
+          avgRating: { $avg: "$ratings" },
+          avgPrice: { $avg: "$price" },
+          minRating: { $min: "$ratings" },
+          maxRating: { $max: "$ratings" },
+          productCount: { $sum: 1 },
+        },
+      },
+      { $sort: { minRating: 1 } },
+      { $match: { avgPrice: { $gt: 60 } } },
+    ]);
+
+    if (productStat <= 0) {
+      res.status(404).json({
+        status: "failed",
+        message: "Product with specified field not found",
+      });
+    }
+    res.status(200).json({
+      status: "Success",
+      count: productStat.length,
+      data: {
+        productStat,
+      },
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "Fail",
       message: error.message,
     });
   }

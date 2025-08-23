@@ -4,15 +4,18 @@ const qs = require("qs");
 exports.getAllProducts = async (req, res) => {
   try {
     const filterParams = { ...req.query };
+    delete filterParams.page;
+    delete filterParams.limit;
     delete filterParams.sort;
-    delete filterParams.fields
+    delete filterParams.fields;
+
+    console.log("filterParams:", filterParams);
 
     const queryStr = JSON.stringify(filterParams).replace(
       /\b(gte|gt|lte|lt)\b/g,
       (match) => `$${match}`
     );
     const mongoQuery = JSON.parse(queryStr);
-    console.log("Filter:", mongoQuery);
 
     let query = Product.find(mongoQuery);
 
@@ -21,7 +24,6 @@ exports.getAllProducts = async (req, res) => {
       sortBy = req.query.sort.split(",").join(" ");
     }
     query = query.sort(sortBy);
-    console.log("Sort:", sortBy);
 
     // Limiting fields
     if (req.query.fields) {
@@ -29,6 +31,19 @@ exports.getAllProducts = async (req, res) => {
       query = query.select(fields);
     } else {
       query = query.select("-__v");
+    }
+
+    // pagination and limiting feature
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+    query = query.skip(skip).limit(limit);
+
+    if (req.query.page) {
+      const resource = await Product.countDocuments();
+      if (skip >= resource) {
+        throw new Error("This page is not found");
+      }
     }
     // Execute query
     const products = await query;

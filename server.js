@@ -10,6 +10,6 @@ const port = process.env.PORT || 3000;
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
-app.listen(port, (req, res) => {
+app.listen(port, () => {
   console.log("Server already started...");
 });

@@ -61,7 +61,14 @@ exports.getProduct = async (req, res) => {
 
 exports.createProduct = async (req, res) => {
   try {
-    const product = await Product.create(req.body);
+    if (!req.file) {
+      return res.status(400).json({
+        status: "fail",
+        message: "Please upload an image file",
+      });
+    }
+    const product = await Product.create({ ...req.body, image: req.file.path });
+
     res.status(201).json({
       status: "success",
       data: { product },
@@ -76,10 +83,14 @@ exports.createProduct = async (req, res) => {
 
 exports.updateProduct = async (req, res) => {
   try {
-    const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const product = await Product.findByIdAndUpdate(
+      req.params.id,
+      { ...req.body, image: req.file.path },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
     if (!product) {
       return res.status(404).json({
         status: "fail",

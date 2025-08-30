@@ -1,8 +1,8 @@
 const fs = require("fs");
 const Product = require("../models/product.model");
-const dotenv = require("dotenv")
+const dotenv = require("dotenv");
 
-dotenv.config({path: './.env.local'})
+dotenv.config({ path: "./.env.local" });
 
 const connectToDB = require("../db/db");
 
@@ -17,7 +17,7 @@ const deleteProducts = async (req, res) => {
   } catch (error) {
     console.log("An error occoured, try again");
   }
-  process.exit()
+  process.exit();
 };
 
 const importProducts = async (req, res) => {

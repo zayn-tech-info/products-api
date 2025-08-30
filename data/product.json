@@ -1,162 +1,230 @@
 [
   {
     "name": "iPhone 15 Pro",
+    "description": "Latest Apple smartphone with A17 Bionic chip",
     "category": "Electronics",
-    "image": "https://example.com/images/iphone15.jpg",
-    "price": 1200,
-    "ratings": 4.8,
-    "totalRatings": 200
+    "images": ["https://example.com/iphone15pro.jpg"],
+    "price": 1199,
+    "salePrice": 1099,
+    "avgRating": 4.8,
+    "brand": "Apple",
+    "stock": 25,
+    "numReviews": 500
   },
   {
-    "name": "Samsung Galaxy S24",
+    "name": "Samsung Galaxy S24 Ultra",
+    "description": "Flagship Samsung smartphone with Snapdragon Gen 3",
     "category": "Electronics",
-    "image": "https://example.com/images/galaxy-s24.jpg",
-    "price": 1100,
-    "ratings": 4.6,
-    "totalRatings": 180
+    "images": ["https://example.com/galaxyS24.jpg"],
+    "price": 999,
+    "salePrice": null,
+    "avgRating": 4.7,
+    "brand": "Samsung",
+    "stock": 40,
+    "numReviews": 320
   },
   {
-    "name": "Sony WH-1000XM5 Headphones",
-    "category": "Electronics",
-    "image": "https://example.com/images/sony-headphones.jpg",
-    "price": 350,
-    "ratings": 4.9,
-    "totalRatings": 150
-  },
-  {
-    "name": "Dell XPS 15 Laptop",
-    "category": "Electronics",
-    "image": "https://example.com/images/dell-xps15.jpg",
-    "price": 1600,
-    "ratings": 4.7,
-    "totalRatings": 120
-  },
-  {
-    "name": "Nike Air Max 2025",
+    "name": "Nike Air Max 270",
+    "description": "Stylish and comfortable running shoes",
     "category": "Clothing",
-    "image": "https://example.com/images/nike-air-max.jpg",
+    "images": ["https://example.com/nikeair270.jpg"],
     "price": 150,
-    "ratings": 4.5,
-    "totalRatings": 300
+    "salePrice": 120,
+    "avgRating": 4.6,
+    "brand": "Nike",
+    "stock": 100,
+    "numReviews": 250
   },
   {
-    "name": "Adidas Hoodie",
+    "name": "Adidas Ultraboost 23",
+    "description": "High-performance running shoes for athletes",
     "category": "Clothing",
-    "image": "https://example.com/images/adidas-hoodie.jpg",
-    "price": 75,
-    "ratings": 4.3,
-    "totalRatings": 220
-  },
-  {
-    "name": "Levi's Slim Fit Jeans",
-    "category": "Clothing",
-    "image": "https://example.com/images/levis-jeans.jpg",
-    "price": 60,
-    "ratings": 4.4,
-    "totalRatings": 260
-  },
-  {
-    "name": "Rolex Submariner Watch",
-    "category": "Clothing",
-    "image": "https://example.com/images/rolex-submariner.jpg",
-    "price": 12000,
-    "ratings": 4.9,
-    "totalRatings": 90
-  },
-  {
-    "name": "Organic Honey Jar",
-    "category": "Food",
-    "image": "https://example.com/images/organic-honey.jpg",
-    "price": 25,
-    "ratings": 4.8,
-    "totalRatings": 140
-  },
-  {
-    "name": "Kellogg's Corn Flakes",
-    "category": "Food",
-    "image": "https://example.com/images/corn-flakes.jpg",
-    "price": 10,
-    "ratings": 4.2,
-    "totalRatings": 300
-  },
-  {
-    "name": "Nutella Chocolate Spread",
-    "category": "Food",
-    "image": "https://example.com/images/nutella.jpg",
-    "price": 15,
-    "ratings": 4.7,
-    "totalRatings": 250
-  },
-  {
-    "name": "Starbucks Coffee Beans",
-    "category": "Food",
-    "image": "https://example.com/images/starbucks-beans.jpg",
-    "price": 20,
-    "ratings": 4.5,
-    "totalRatings": 210
-  },
-  {
-    "name": "The Alchemist Book",
-    "category": "Other",
-    "image": "https://example.com/images/alchemist-book.jpg",
-    "price": 12,
-    "ratings": 4.6,
-    "totalRatings": 500
-  },
-  {
-    "name": "Apple AirTag",
-    "category": "Electronics",
-    "image": "https://example.com/images/apple-airtag.jpg",
-    "price": 30,
-    "ratings": 4.4,
-    "totalRatings": 340
-  },
-  {
-    "name": "Gucci Leather Belt",
-    "category": "Clothing",
-    "image": "https://example.com/images/gucci-belt.jpg",
-    "price": 450,
-    "ratings": 4.6,
-    "totalRatings": 95
-  },
-  {
-    "name": "Oreo Cookies Pack",
-    "category": "Food",
-    "image": "https://example.com/images/oreo.jpg",
-    "price": 5,
-    "ratings": 4.3,
-    "totalRatings": 400
-  },
-  {
-    "name": "HP Envy Printer",
-    "category": "Electronics",
-    "image": "https://example.com/images/hp-envy.jpg",
-    "price": 200,
-    "ratings": 4.1,
-    "totalRatings": 175
-  },
-  {
-    "name": "Timberland Boots",
-    "category": "Clothing",
-    "image": "https://example.com/images/timberland-boots.jpg",
+    "images": ["https://example.com/adidasultraboost.jpg"],
     "price": 180,
-    "ratings": 4.5,
-    "totalRatings": 220
+    "salePrice": null,
+    "avgRating": 4.5,
+    "brand": "Adidas",
+    "stock": 75,
+    "numReviews": 200
   },
   {
-    "name": "Canon EOS R7 Camera",
+    "name": "Sony WH-1000XM5",
+    "description": "Noise-cancelling over-ear headphones",
     "category": "Electronics",
-    "image": "https://example.com/images/canon-r7.jpg",
-    "price": 1400,
-    "ratings": 4.8,
-    "totalRatings": 110
+    "images": ["https://example.com/sonywh1000xm5.jpg"],
+    "price": 399,
+    "salePrice": 349,
+    "avgRating": 4.9,
+    "brand": "Sony",
+    "stock": 50,
+    "numReviews": 600
   },
   {
-    "name": "Monopoly Board Game",
-    "category": "Other",
-    "image": "https://example.com/images/monopoly.jpg",
-    "price": 35,
-    "ratings": 4.7,
-    "totalRatings": 310
+    "name": "Logitech MX Master 3S",
+    "description": "Advanced ergonomic wireless mouse",
+    "category": "Gadgets",
+    "images": ["https://example.com/mxmaster3s.jpg"],
+    "price": 129,
+    "salePrice": null,
+    "avgRating": 4.8,
+    "brand": "Logitech",
+    "stock": 60,
+    "numReviews": 420
+  },
+  {
+    "name": "MacBook Pro 16-inch M3",
+    "description": "Apple laptop with M3 chip for professionals",
+    "category": "Electronics",
+    "images": ["https://example.com/macbookpro16m3.jpg"],
+    "price": 2499,
+    "salePrice": 2299,
+    "avgRating": 4.9,
+    "brand": "Apple",
+    "stock": 20,
+    "numReviews": 320
+  },
+  {
+    "name": "Dell XPS 13 Plus",
+    "description": "Compact and premium Windows ultrabook",
+    "category": "Electronics",
+    "images": ["https://example.com/dellxps13plus.jpg"],
+    "price": 1499,
+    "salePrice": 1399,
+    "avgRating": 4.7,
+    "brand": "Dell",
+    "stock": 35,
+    "numReviews": 280
+  },
+  {
+    "name": "The Lean Startup",
+    "description": "Book by Eric Ries on modern entrepreneurship",
+    "category": "Books",
+    "images": ["https://example.com/leanstartup.jpg"],
+    "price": 20,
+    "salePrice": 15,
+    "avgRating": 4.5,
+    "brand": "Crown Publishing",
+    "stock": 200,
+    "numReviews": 1500
+  },
+  {
+    "name": "Atomic Habits",
+    "description": "James Clear’s bestselling self-improvement book",
+    "category": "Books",
+    "images": ["https://example.com/atomichabits.jpg"],
+    "price": 25,
+    "salePrice": 18,
+    "avgRating": 4.9,
+    "brand": "Penguin",
+    "stock": 300,
+    "numReviews": 2200
+  },
+  {
+    "name": "IKEA LACK Coffee Table",
+    "description": "Minimalist white coffee table",
+    "category": "Furniture",
+    "images": ["https://example.com/ikealack.jpg"],
+    "price": 49,
+    "salePrice": 39,
+    "avgRating": 4.4,
+    "brand": "IKEA",
+    "stock": 120,
+    "numReviews": 430
+  },
+  {
+    "name": "Herman Miller Aeron Chair",
+    "description": "Ergonomic office chair with mesh design",
+    "category": "Furniture",
+    "images": ["https://example.com/aeronchair.jpg"],
+    "price": 1450,
+    "salePrice": null,
+    "avgRating": 4.8,
+    "brand": "Herman Miller",
+    "stock": 10,
+    "numReviews": 95
+  },
+  {
+    "name": "Oreo Original",
+    "description": "Classic chocolate sandwich cookies",
+    "category": "Food",
+    "images": ["https://example.com/oreo.jpg"],
+    "price": 3,
+    "salePrice": 2.5,
+    "avgRating": 4.7,
+    "brand": "Nabisco",
+    "stock": 500,
+    "numReviews": 2500
+  },
+  {
+    "name": "Nutella Hazelnut Spread",
+    "description": "Sweet chocolate hazelnut spread",
+    "category": "Food",
+    "images": ["https://example.com/nutella.jpg"],
+    "price": 6,
+    "salePrice": null,
+    "avgRating": 4.9,
+    "brand": "Ferrero",
+    "stock": 350,
+    "numReviews": 3000
+  },
+  {
+    "name": "Wilson Evolution Basketball",
+    "description": "Official size indoor basketball",
+    "category": "Sports",
+    "images": ["https://example.com/wilsonbasketball.jpg"],
+    "price": 70,
+    "salePrice": 60,
+    "avgRating": 4.8,
+    "brand": "Wilson",
+    "stock": 80,
+    "numReviews": 140
+  },
+  {
+    "name": "Spalding NBA Hoop",
+    "description": "Portable basketball hoop system",
+    "category": "Sports",
+    "images": ["https://example.com/spaldinghoop.jpg"],
+    "price": 250,
+    "salePrice": null,
+    "avgRating": 4.6,
+    "brand": "Spalding",
+    "stock": 15,
+    "numReviews": 85
+  },
+  {
+    "name": "Dyson Supersonic Hair Dryer",
+    "description": "High-speed, heat-controlled hair dryer",
+    "category": "Beauty",
+    "images": ["https://example.com/dysondryer.jpg"],
+    "price": 399,
+    "salePrice": 349,
+    "avgRating": 4.8,
+    "brand": "Dyson",
+    "stock": 45,
+    "numReviews": 210
+  },
+  {
+    "name": "Maybelline Fit Me Foundation",
+    "description": "Matte + poreless liquid foundation",
+    "category": "Beauty",
+    "images": ["https://example.com/maybellinefitme.jpg"],
+    "price": 12,
+    "salePrice": null,
+    "avgRating": 4.5,
+    "brand": "Maybelline",
+    "stock": 500,
+    "numReviews": 1200
+  },
+  {
+    "name": "PlayStation 5 Console",
+    "description": "Sony next-gen gaming console",
+    "category": "Electronics",
+    "images": ["https://example.com/ps5.jpg"],
+    "price": 499,
+    "salePrice": 449,
+    "avgRating": 4.9,
+    "brand": "Sony",
+    "stock": 35,
+    "numReviews": 1200
   }
 ]

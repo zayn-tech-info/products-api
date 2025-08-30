@@ -16,10 +16,8 @@ class ApiFeatures {
         (match) => `$${match}`
       );
       const mongoQuery = JSON.parse(queryStr);
-
       this.query = this.query.find(mongoQuery);
     }
-
     return this;
   }
 

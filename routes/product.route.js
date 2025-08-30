@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { upload } = require("../config/cloudinary");
 const {
-  getHighestRated,
   getAllProducts,
   getProduct,
   createProduct,
@@ -11,14 +10,24 @@ const {
   getProductStats,
 } = require("../controllers/product.controller");
 
-router.route("/hightestrated").get(getHighestRated, getAllProducts);
+router.get(
+  "/hightestrated",
+  (req, res, next) => {
+    req.query.limit = req.query.limit || "4";
+    req.query.sort = req.query.sort || "-totalRatings";
+    next();
+  },
+  getAllProducts
+);
 router.route("/get-products-stats").get(getProductStats);
-
 router
   .route("/")
   .get(getAllProducts)
   .post(upload.single("image"), createProduct);
-
-router.route("/:id").get(getProduct).patch(updateProduct).delete(deleteProduct);
+router
+  .route("/:id")
+  .get(getProduct)
+  .patch(upload.single("image"), updateProduct)
+  .delete(deleteProduct);
 
 module.exports = router;

@@ -1,22 +1,8 @@
 const Product = require("../models/product.model");
 const ApiFeatures = require("../utils/ApiFeatures");
 
-exports.getHighestRated = (req, _, next) => {
-  req.query.limit = "4";
-  req.query.sort = "-totalRatings";
-  next();
-};
-
 exports.getAllProducts = async (req, res) => {
   try {
-    // const features = new ApiFeatures(Product.find(), req.query)
-    //   .sort()
-    //   .paginate()
-    //   .filter()
-    //   .limitFields();
-
-    // const products = await features;
-
     const features = new ApiFeatures(Product.find(), req.query)
       .sort()
       .paginate()
@@ -67,7 +53,7 @@ exports.createProduct = async (req, res) => {
         message: "Please upload an image file",
       });
     }
-    const product = await Product.create({ ...req.body, image: req.file.path });
+    const product = await Product.create({ ...req.body, images: req.file.path });
 
     res.status(201).json({
       status: "success",
@@ -83,21 +69,18 @@ exports.createProduct = async (req, res) => {
 
 exports.updateProduct = async (req, res) => {
   try {
-    const product = await Product.findByIdAndUpdate(
-      req.params.id,
-      { ...req.body, image: req.file.path },
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
+    const payload = { ...req.body };
+    if (req.file && req.file.path) payload.image = req.file.path;
+    const product = await Product.findByIdAndUpdate(req.params.id, payload, {
+      new: true,
+      runValidators: true,
+    });
     if (!product) {
       return res.status(404).json({
         status: "fail",
         message: "Product not found",
       });
     }
-
     res.status(200).json({
       status: "success",
       data: { product },

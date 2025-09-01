@@ -10,7 +10,6 @@ const {
   getProductStats,
 } = require("../controllers/product.controller");
 
- 
 router.get(
   "/hightestrated",
   (req, res, next) => {
@@ -20,9 +19,9 @@ router.get(
   },
   getAllProducts
 );
- 
+
 router.get("/get-products-stats", getProductStats);
- 
+
 router.get("/", getAllProducts);
 router.post("/", upload.single("image"), createProduct);
 

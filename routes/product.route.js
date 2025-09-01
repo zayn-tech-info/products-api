@@ -10,6 +10,7 @@ const {
   getProductStats,
 } = require("../controllers/product.controller");
 
+ 
 router.get(
   "/hightestrated",
   (req, res, next) => {
@@ -19,15 +20,14 @@ router.get(
   },
   getAllProducts
 );
-router.route("/get-products-stats").get(getProductStats);
-router
-  .route("/")
-  .get(getAllProducts)
-  .post(upload.single("image"), createProduct);
-router
-  .route("/:id")
-  .get(getProduct)
-  .patch(upload.single("image"), updateProduct)
-  .delete(deleteProduct);
+ 
+router.get("/get-products-stats", getProductStats);
+ 
+router.get("/", getAllProducts);
+router.post("/", upload.single("image"), createProduct);
+
+router.get("/:id", getProduct);
+router.patch("/:id", upload.single("image"), updateProduct);
+router.delete("/:id", deleteProduct);
 
 module.exports = router;

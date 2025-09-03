@@ -1,4 +1,4 @@
-const sendToken = (user, res, message) => {
+const sendToken = (user, res, message, statusCode) => {
   const token = user.generateJWt();
 
   res.cookie("token", token, {
@@ -8,12 +8,11 @@ const sendToken = (user, res, message) => {
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
-  res.status(201).json({
+  res.status(statusCode).json({
     status: "success",
     message,
     token,
-    user
   });
 };
 
-module.exports = sendToken
+module.exports = sendToken;

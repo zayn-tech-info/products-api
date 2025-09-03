@@ -37,6 +37,9 @@ const UserSchema = new mongoose.Schema(
       country: String,
     },
     phone: String,
+    passwordChangedAt: {
+      type: Date,
+    }
   },
   { timestamps: true }
 );
@@ -48,6 +51,12 @@ UserSchema.pre("save", async function (next) {
   this.confirmPassword = undefined;
 });
 
+UserSchema.methods.comparePasswordInDB = async function (
+  passord,
+  passwordInDB
+) {
+  return await bcrypt.compare(passord, passwordInDB);
+};
 UserSchema.methods.generateJWt = function () {
   return jwt.sign(
     { id: this._id, role: this.role },
@@ -57,5 +66,17 @@ UserSchema.methods.generateJWt = function () {
     }
   );
 };
+
+UserSchema.methods.isPasswordChange = function (jwtTimeStamp) {
+  if (!this.passwordChangedAt) return false;
+  
+  const passwordChangeTimeStamp = this.passwordChangedAt ? parseInt(
+    this.passwordChangedAt.getTime() / 1000,
+    10
+  ) : 0;
+
+  return passwordChangeTimeStamp > jwtTimeStamp
+};
+
 const User = mongoose.model("User", UserSchema);
 module.exports = User;

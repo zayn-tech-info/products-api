@@ -27,18 +27,9 @@ const castError = (error) => {
   return new CustomError(msg, 400);
 };
 const duplicateKeyErrorHandle = (error) => {
-  let name = "field";
-  if (error.keyValue && error.keyValue.name) {
-    name = error.keyValue.name;
-  } else if (
-    error.err &&
-    error.err.errorResponse &&
-    error.err.errorResponse.keyValue &&
-    error.err.errorResponse.keyValue.name
-  ) {
-    name = error.err.errorResponse.keyValue.name;
-  }
-  const msg = `The field with the ${name} already exists`;
+  const name = error.keyValue.name;
+  const msg = `The field with name ${name} already exists, Please use another name`;
+
   return new CustomError(msg, 400);
 };
 
@@ -51,6 +42,15 @@ const vaildationErrorHandler = (error) => {
   return new CustomError(msg, 400);
 };
 
+const tokenExpiredErrorHandler = () => {
+  const msg = "Session expired, please login again";
+  return new CustomError(msg, 404);
+};
+
+const JsonWebTokenErrorHandler = () => {
+  return new CustomError("Invaild token, Please login again", 401);
+};
+
 module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || "fail";
@@ -59,15 +59,20 @@ module.exports = (err, req, res, next) => {
     devError(res, err);
   } else if (process.env.NODE_ENV === "production") {
     if (err.name === "CastError") err = castError(err);
-    if (
-      err.code === 11000 ||
-      (err.err && err.err.errorResponse && err.err.errorResponse.code === 11000)
-    ) {
+    if (err.code === 11000) {
       err = duplicateKeyErrorHandle(err);
     }
-    if (err.name === "ValidationError") { 
+    if (err.name === "ValidationError") {
       err = vaildationErrorHandler(err);
     }
+    if (err.name === "TokenExpiredError") {
+      err = tokenExpiredErrorHandler(err);
+    }
+    if (err.name === "JsonWebTokenError") {
+      err = JsonWebTokenErrorHandler(err);
+    }
+
+
     prodError(res, err);
   }
 };

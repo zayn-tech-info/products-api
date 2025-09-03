@@ -9,6 +9,7 @@ const {
   deleteProduct,
   getProductStats,
 } = require("../controllers/product.controller");
+const { protectRoute } = require("../controllers/user.controller");
 
 router.get(
   "/hightestrated",
@@ -22,7 +23,7 @@ router.get(
 
 router.get("/get-products-stats", getProductStats);
 
-router.get("/", getAllProducts);
+router.get("/", protectRoute, getAllProducts);
 router.post("/", upload.single("image"), createProduct);
 
 router.get("/:id", getProduct);

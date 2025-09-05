@@ -56,7 +56,7 @@ const UserSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-// [6,6,7,9]
+ 
 
 UserSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();

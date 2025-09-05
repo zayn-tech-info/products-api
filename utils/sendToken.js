@@ -12,7 +12,9 @@ const sendToken = (user, res, message, statusCode) => {
     status: "success",
     message,
     token,
+    user,
   });
+  
 };
 
 module.exports = sendToken;

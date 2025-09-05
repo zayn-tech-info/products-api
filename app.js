@@ -1,15 +1,16 @@
 const express = require("express");
 const productsRoute = require("./routes/product.route");
-const userRouter = require("./routes/user.route")
+const userRouter = require("./routes/user.route");
 const globalError = require("./controllers/error.controller");
 const connectToDB = require("./db/db");
 const CustomError = require("./utils/customError");
-
+const authRouter = require("./routes/auth.route");
 
 const app = express();
 app.use(express.json());
 app.use("/api/v1/products", productsRoute);
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/auth", authRouter);
 
 connectToDB();
 
@@ -22,6 +23,5 @@ app.all("*", (req, res, next) => {
 });
 
 app.use(globalError);
-
 
 module.exports = app;

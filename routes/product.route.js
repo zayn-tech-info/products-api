@@ -13,7 +13,7 @@ const {
 const {
   protectRoute,
   restrictRoute,
-} = require("../controllers/user.controller");
+} = require("../controllers/auth.controller");
 
 router.get(
   "/hightestrated",

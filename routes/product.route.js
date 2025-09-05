@@ -9,10 +9,15 @@ const {
   deleteProduct,
   getProductStats,
 } = require("../controllers/product.controller");
-const { protectRoute } = require("../controllers/user.controller");
+
+const {
+  protectRoute,
+  restrictRoute,
+} = require("../controllers/user.controller");
 
 router.get(
   "/hightestrated",
+  protectRoute,
   (req, res, next) => {
     req.query.limit = req.query.limit || "4";
     req.query.sort = req.query.sort || "-totalRatings";
@@ -21,13 +26,25 @@ router.get(
   getAllProducts
 );
 
-router.get("/get-products-stats", getProductStats);
+router.get("/get-products-stats", protectRoute, getProductStats);
 
 router.get("/", protectRoute, getAllProducts);
-router.post("/", upload.single("image"), createProduct);
+router.post(
+  "/",
+  protectRoute,
+  restrictRoute("admin"),
+  upload.single("image"),
+  createProduct
+);
 
 router.get("/:id", getProduct);
-router.patch("/:id", upload.single("image"), updateProduct);
-router.delete("/:id", deleteProduct);
+router.patch(
+  "/:id",
+  protectRoute,
+  restrictRoute("admin"),
+  upload.single("image"),
+  updateProduct
+);
+router.delete("/:id", protectRoute, restrictRoute("admin"), deleteProduct);
 
 module.exports = router;

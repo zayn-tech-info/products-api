@@ -27,8 +27,9 @@ const castError = (error) => {
   return new CustomError(msg, 400);
 };
 const duplicateKeyErrorHandle = (error) => {
-  const name = error.keyValue.name;
-  const msg = `The field with name ${name} already exists, Please use another name`;
+  const field = Object.keys(error.keyValue)[0];
+  const value = error.keyValue[field];
+  const msg = `${field} with ${value} already exist. Please use another ${field}`;
 
   return new CustomError(msg, 400);
 };
@@ -71,7 +72,6 @@ module.exports = (err, req, res, next) => {
     if (err.name === "JsonWebTokenError") {
       err = JsonWebTokenErrorHandler(err);
     }
-
 
     prodError(res, err);
   }

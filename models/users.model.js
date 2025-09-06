@@ -51,12 +51,15 @@ const UserSchema = new mongoose.Schema(
     passwordChangedAt: {
       type: Date,
     },
+    active: {
+      default: true,
+      type: Boolean,
+    },
     resetPasswordToken: String,
     resetTokenExpires: Date,
   },
   { timestamps: true }
 );
- 
 
 UserSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
@@ -102,5 +105,9 @@ UserSchema.methods.resetPasswordTokenfunc = function () {
   return resetToken;
 };
 
+UserSchema.pre(/^find/, function (next) {
+  this.find({ active: { $ne: false } });
+  next();
+});
 const User = mongoose.model("User", UserSchema);
 module.exports = User;

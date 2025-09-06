@@ -1,10 +1,14 @@
 const express = require("express");
+const { protectRoute } = require("../controllers/auth.controller");
 const {
-  protectRoute,
-} = require("../controllers/auth.controller");
-const { updatePassword } = require("../controllers/user.controller");
+  updatePassword,
+  updateMe,
+  deleteMe,
+} = require("../controllers/user.controller");
 
 const router = express.Router();
 
 router.patch("/updatepassword", protectRoute, updatePassword);
+router.patch("/updateMe", protectRoute, updateMe);
+router.patch("/deleteMe", protectRoute, deleteMe);
 module.exports = router;

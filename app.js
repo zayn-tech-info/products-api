@@ -12,7 +12,6 @@ const authRouter = require("./routes/auth.route");
 const userRouter = require("./routes/user.route");
 const productsRoute = require("./routes/product.route");
 
-
 const app = express();
 app.use(helemt());
 
@@ -28,7 +27,7 @@ app.use(express.json());
 
 app.use(sanitize());
 app.use(xss());
-app.use(hpp({ whitelist: ["ratings", "avgratings", 'category'] }));
+app.use(hpp({ whitelist: ["ratings", "avgratings", "category"] }));
 
 app.use("/api/v1/products", productsRoute);
 app.use("/api/v1/users", userRouter);

@@ -51,7 +51,7 @@ const protectRoute = asyncErrorHandler(async (req, res, next) => {
       token,
       process.env.JWT_SECRET_KEY
     );
-  } catch (err) {
+  } catch (err) {    
     return next(new CustomError("Invalid or malformed token", 401));
   }
 
@@ -152,6 +152,15 @@ const resetPassword = asyncErrorHandler(async (req, res, next) => {
   sendToken(user, res, "Logged in successfully", 200);
 });
 
+const checkAuth = asyncErrorHandler(async (req, res, next) => {
+  if (!req.user) {
+    const error = new CustomError("Authentication error", 401);
+    console.log(error);
+    
+    return next(error);
+  }
+  res.status(200).json(req.user);
+});
 
 module.exports = {
   signup,
@@ -160,4 +169,5 @@ module.exports = {
   restrictRoute,
   forgotpassword,
   resetPassword,
+  checkAuth,
 };

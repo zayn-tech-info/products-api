@@ -1,9 +1,11 @@
 const express = require("express");
 const rateLimit = require("express-rate-limit");
-const helemt = require("helmet");
+const helmet = require("helmet");
 const xss = require("xss-clean");
 const hpp = require("hpp");
 const sanitize = require("express-mongo-sanitize");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 const globalError = require("./controllers/error.controller");
 const connectToDB = require("./db/db");
@@ -13,10 +15,14 @@ const userRouter = require("./routes/user.route");
 const productsRoute = require("./routes/product.route");
 
 const app = express();
-app.use(helemt());
+app.use(
+  cors("*")
+);
+app.use(helmet());
+app.use(cookieParser());
 
 let limiter = rateLimit({
-  max: 2,
+  max: 1000,
   windowMs: 60 * 60 * 1000,
   message:
     "We have received too many requests from this IP, please try again after 1hr",

@@ -18,6 +18,8 @@
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "cloudinary": "^1.41.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^4.19.2",
     "express-mongo-sanitize": "^2.2.0",

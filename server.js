@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 const server = app.listen(port, () => {
-  console.log("Server already started...");
+  console.log(`Server already started...Port: ${port}`);
 });
 
 process.on("unHandleRejection", (err) => {

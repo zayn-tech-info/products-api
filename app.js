@@ -16,7 +16,10 @@ const productsRoute = require("./routes/product.route");
 
 const app = express();
 app.use(
-  cors("*")
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
 );
 app.use(helmet());
 app.use(cookieParser());

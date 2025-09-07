@@ -35,14 +35,17 @@ const login = asyncErrorHandler(async (req, res, next) => {
 });
 
 const protectRoute = asyncErrorHandler(async (req, res, next) => {
-  const jwtToken = req.headers.authorization;
   let token;
-  if (!jwtToken || !jwtToken.startsWith("Bearer ")) {
-    return next(new CustomError("You are not logged in", 401));
+  const jwtToken = req.headers.authorization;
+  // Check for token in Authorization header
+  if (jwtToken && jwtToken.startsWith("Bearer ")) {
+    token = jwtToken.split(" ")[1];
+  } else if (req.cookies && req.cookies.token) {
+    // Check for token in cookies
+    token = req.cookies.token;
   }
-  token = jwtToken.split(" ")[1];
   if (!token) {
-    return next(new CustomError("Token missing", 401));
+    return next(new CustomError("You are not logged in", 401));
   }
 
   let decodedToken;
@@ -51,7 +54,7 @@ const protectRoute = asyncErrorHandler(async (req, res, next) => {
       token,
       process.env.JWT_SECRET_KEY
     );
-  } catch (err) {    
+  } catch (err) {
     return next(new CustomError("Invalid or malformed token", 401));
   }
 
@@ -156,11 +159,24 @@ const checkAuth = asyncErrorHandler(async (req, res, next) => {
   if (!req.user) {
     const error = new CustomError("Authentication error", 401);
     console.log(error);
-    
+
     return next(error);
   }
   res.status(200).json(req.user);
 });
+
+const logout = (req, res) => {
+  res.cookie("token", "", {
+    httpOnly: true,
+    expires: new Date(0),
+    sameSite: "strict",
+    secure: process.env.NODE_ENV === "production",
+  });
+  res.status(200).json({
+    status: "success",
+    message: "Logged out successfully",
+  });
+};
 
 module.exports = {
   signup,
@@ -170,4 +186,5 @@ module.exports = {
   forgotpassword,
   resetPassword,
   checkAuth,
+  logout,
 };

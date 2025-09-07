@@ -17,7 +17,7 @@ const productsRoute = require("./routes/product.route");
 const app = express();
 app.use(
   cors({
-    origin: "https://temu-clone-zayn.vercel.app/",
+    origin: "https://temu-clone-zayn.vercel.app",
     credentials: true,
   })
 );

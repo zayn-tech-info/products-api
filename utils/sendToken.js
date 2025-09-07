@@ -3,8 +3,10 @@ const sendToken = (user, res, message, statusCode) => {
 
   res.cookie("token", token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    secure: true,
+    sameSite: "none",
+    domain: ".https://temu-clone-zayn.vercel.app",
+    path: "/",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
@@ -14,7 +16,6 @@ const sendToken = (user, res, message, statusCode) => {
     token,
     user,
   });
-  
 };
 
 module.exports = sendToken;

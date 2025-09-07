@@ -5,7 +5,7 @@ const sendToken = (user, res, message, statusCode) => {
     httpOnly: true,
     secure: true,
     sameSite: "none",
-    domain: ".https://temu-clone-zayn.vercel.app",
+    domain: ".vercel.app",
     path: "/",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });

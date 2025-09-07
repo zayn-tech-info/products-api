@@ -1,12 +1,10 @@
 const sendToken = (user, res, message, statusCode) => {
-  const token = user.generateJWt();
+  const token = user.generateJWT();
 
   res.cookie("token", token, {
     httpOnly: true,
-    secure: true,
-    sameSite: "none",
-    domain: ".vercel.app",
-    path: "/",
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: "lax",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
